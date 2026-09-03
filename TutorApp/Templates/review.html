@@ -1,0 +1,20 @@
+{% extends "Base.html" %}
+{% block title %}
+Reviews
+{% endblock %}
+{% block content %}
+<h1 class="text-center mt-4 text-white">Reviews</h1>
+<a href="{% url 'reviewsForm' %}" class="btn btn-warning">Give Your review</a>
+{% for Review in UserReview %}
+<div class="card">
+    <!-- <h5 class="card-header">Featured</h5> -->
+    <!-- <img src="..." class="card-img-top" alt="..."> --> 
+    <div class="card-body">
+        <h5 class="card-title">{{ Review.user.username }}</h5>
+        <p class="card-text">{{ Review.text}} <br> Review ID:{{ Review.id}}</p>
+        <a href="#" class="btn btn-success">Edit</a>
+        <a href="#" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
