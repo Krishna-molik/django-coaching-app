@@ -1,7 +1,8 @@
 from django.shortcuts import render,HttpResponse,redirect
-from .forms import ReviewForm
+# from django.contrib.auth.decorators import login_required	
+from .forms import ReviewForm,UserCreationForm
 from .models import UserDetails
-
+from django.contrib.auth import login
 # Create your views here.
 def home(request):
 	# return HttpResponse("Hello World")
@@ -12,7 +13,7 @@ def Course(request):
 
 def review(request):
 	UserReview = UserDetails.objects.all()
-	context = {'UserReview':UserReview}
+	context = {'UserReview':UserReview} 
 	return render(request,"review.html",context)
 
 def review_forms(request):
@@ -27,6 +28,18 @@ def review_forms(request):
 		form = ReviewForm()
 	return render(request,'Review_create.html',{'form':form})
 
+def Registration(request):
+	if request.method=='POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			RegForm = form.save(commit=False)
+			RegForm.set_password(form.cleaned_data['password1'])
+			RegForm.save()
+			login(request,RegForm)
+			return redirect('/home')
+	else:
+		form = UserCreationForm()
+	return render(request,"Register.html",{"form":form})
 
 
 
