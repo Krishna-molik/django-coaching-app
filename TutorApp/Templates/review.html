@@ -12,8 +12,8 @@ Reviews
     <div class="card-body">
         <h5 class="card-title">{{ Review.user.username }}</h5>
         <p class="card-text">{{ Review.text}} <br> Review ID:{{ Review.id}}</p>
-        <a href="#" class="btn btn-success">Edit</a>
-        <a href="#" class="btn btn-danger">Delete</a>
+        <a href="{% url 'edit_review' Review.id  %}" class="btn btn-success">Edit</a>
+        <a href="{% url 'delete_review' Review.id %}" class="btn btn-danger">Delete</a>
     </div>
 </div>
 {% endfor %}

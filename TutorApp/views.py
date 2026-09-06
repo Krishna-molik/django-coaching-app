@@ -41,6 +41,26 @@ def Registration(request):
 		form = UserCreationForm()
 	return render(request,"Register.html",{"form":form})
 
+def delete(request,id):
+	review = UserDetails.objects.get(id=id, user=request.user)
+	if request.method == 'POST':
+		review.delete()
+		return redirect('/reviews')
+	return render(request,'delete.html',{'review':review})
+
+def edit(request,id):
+	review = UserDetails.objects.get(id=id , user=request.user)
+	if request.method=='POST':
+		form = ReviewForm(request.POST,request.FILES,instance=review)
+		if form.is_valid():
+			EditReview = form.save(commit=False) 
+			EditReview.user = request.user 
+			EditReview.save()
+			return redirect('/reviews')
+	else:
+		form = ReviewForm(instance=review)
+	return render(request,'edit.html',{'form':form})
+
 
 
 
