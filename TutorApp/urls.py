@@ -8,6 +8,7 @@ urlpatterns = [
     path('givereview',views.review_forms, name = "reviewsForm"),
     path('edit/<int:id>/',views.edit,name='edit_review'),
     path('delete/<int:id>/',views.delete,name="delete_review"),
+    path('register',views.Registration,name="register")
 ]
 
 

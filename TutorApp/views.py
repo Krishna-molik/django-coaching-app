@@ -1,21 +1,23 @@
 from django.shortcuts import render,HttpResponse,redirect
-# from django.contrib.auth.decorators import login_required	
+from django.contrib.auth.decorators import login_required	
 from .forms import ReviewForm,UserCreationForm
 from .models import UserDetails
 from django.contrib.auth import login
 # Create your views here.
 def home(request):
-	# return HttpResponse("Hello World")
+	# return HttpResponse("Hello World") 
 	return render(request,"index.html")		
 
 def Course(request):
 	return render(request,"courses.html")
 
+@login_required
 def review(request):
 	UserReview = UserDetails.objects.all()
 	context = {'UserReview':UserReview} 
 	return render(request,"review.html",context)
 
+@login_required
 def review_forms(request):
 	if request.method == 'POST':
 		form = ReviewForm(request.POST, request.FILES)
@@ -36,11 +38,12 @@ def Registration(request):
 			RegForm.set_password(form.cleaned_data['password1'])
 			RegForm.save()
 			login(request,RegForm)
-			return redirect('/home')
+			return redirect('/')
 	else:
 		form = UserCreationForm()
-	return render(request,"Register.html",{"form":form})
+	return render(request,"Registration/Register.html",{"form":form})
 
+@login_required
 def delete(request,id):
 	review = UserDetails.objects.get(id=id, user=request.user)
 	if request.method == 'POST':
@@ -48,6 +51,7 @@ def delete(request,id):
 		return redirect('/reviews')
 	return render(request,'delete.html',{'review':review})
 
+@login_required
 def edit(request,id):
 	review = UserDetails.objects.get(id=id , user=request.user)
 	if request.method=='POST':
