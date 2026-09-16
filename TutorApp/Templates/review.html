@@ -4,7 +4,6 @@ Reviews
 {% endblock %}
 {% block content %}
 <h1 class="text-center mt-4 text-white">Reviews</h1>
-<a href="{% url 'reviewsForm' %}" class="btn btn-warning">Give Your review</a>
 {% for Review in UserReview %}
 <div class="card">
     <!-- <h5 class="card-header">Featured</h5> -->
@@ -17,4 +16,7 @@ Reviews
     </div>
 </div>
 {% endfor %}
+<div class="text-center">
+    <a href="{% url 'reviewsForm' %}" class="btn btn-warning mb-3 mt-3 px-3 py-1 fst-italic fs-5">Give review</a>
+</div>
 {% endblock %}

@@ -1,7 +1,37 @@
 {% extends "Base.html" %}
+{% load static %}
 {% block title %}
-	Courses
-{% endblock  %}
+Courses
+{% endblock %}
 {% block content %}
-	hello this is Courses.
+<div class="mt-5 ">
+    <h2 class="text-center mb-4 mt-4 text-decoration-underline fw-light">Our Courses</h2>
+    <div class="row">
+        <div class="card col-6 mx-auto  " style="width: 25rem;">
+            <img src="{% static "Images/mobile-app-development-team.webp" %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">App Development </h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <div class="card col-6 mx-auto" style="width: 25rem;">
+            <img src="{% static "Images/web-development-word-cloud-concept-grey-background-88650624.webp" %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Web Development </h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-4 text-center">
+    <h3 class="mb-3 mt-2">About Courses</h3>
+    <p>Transform your passion for technology into a high-paying software career with **CareerStar**, India’s premier institute for industry-focused IT education. Whether you dream of building dynamic web applications through full-stack **Web Development**, crafting seamless mobile applications in **Android Development**, or mastering predictive analytics with **Data Science**, CareerStar delivers job-ready skills designed to kickstart your tech journey. Our curriculum is constantly updated alongside top tech giants to ensure you learn the exact frameworks, tools, and programming languages currently driving the global tech market.
+        <br> <br>
+        At CareerStar, learning goes far beyond basic theory. You gain hands-on experience by building real-world projects under the guidance of expert mentors with years of practical engineering experience. From mastering Python, JavaScript, and Kotlin to executing live machine learning models, every module is designed to build your confidence and portfolio. Beyond coding, CareerStar equips you with robust career preparation, including resume refinement, mock technical interviews, and dedicated **placement assistance** to connect you with top tech recruiters across India.
+        <br> <br>
+        Don't just watch the digital revolution happen—lead it. Enroll at CareerStar today to turn your career ambitions into reality, master high-demand tech skills, and secure your place in the fast-growing technology sector!</p>
+    <a href="{% url 'reviews' %}" class="fw-light fs-5 text-info">see the reviews</a>
+</div>
 {% endblock %}
