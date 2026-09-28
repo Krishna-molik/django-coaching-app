@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ReviewForm,UserCreationForm
 from .models import UserDetails
 from django.contrib.auth import login
+from django.db.models import Q
 # Create your views here.
 def home(request):
 	# return HttpResponse("Hello World") 
@@ -13,8 +14,13 @@ def Course(request):
 
 @login_required
 def review(request):
-	UserReview = UserDetails.objects.all()
-	context = {'UserReview':UserReview} 
+	# UserReview = UserDetails.objects.all() 
+	Search = request.GET.get('search')
+	if Search:
+		Review = UserDetails.objects.filter(Q(user__username__icontains=Search) | Q(text__icontains=Search))
+	else:
+		Review = UserDetails.objects.all()
+	context = {'Reviews':Review} 
 	return render(request,"review.html",context)
 
 @login_required

@@ -10,6 +10,9 @@
 		{% csrf_token %}
 		{{ form.as_p }}
 		<button type="submit" class="btn btn-primary">Login</button>
+		{% load socialaccount %} 
+		<div class="text-center my-3">OR</div>
+		<a href="{% url provider_login_url 'google' %}" class="btn btn-outline-danger w-100">Sign in with Google</a>
 	</form>
 	<p>Don't have an account <a href="{% url 'register' %}">Click here</a> to register.</p>
 {% endblock  %}

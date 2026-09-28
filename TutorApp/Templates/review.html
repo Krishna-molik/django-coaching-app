@@ -4,15 +4,17 @@ Reviews
 {% endblock %}
 {% block content %}
 <h1 class="text-center mt-4 text-white">Reviews</h1>
-{% for Review in UserReview %}
+{% for Review in Reviews %}
 <div class="card">
     <!-- <h5 class="card-header">Featured</h5> -->
     <!-- <img src="..." class="card-img-top" alt="..."> --> 
     <div class="card-body">
         <h5 class="card-title">{{ Review.user.username }}</h5>
         <p class="card-text">{{ Review.text}} <br> Review ID:{{ Review.id}}</p>
+        {% if Review.user == user %}
         <a href="{% url 'edit_review' Review.id  %}" class="btn btn-success">Edit</a>
         <a href="{% url 'delete_review' Review.id %}" class="btn btn-danger">Delete</a>
+        {% endif %}
     </div>
 </div>
 {% endfor %}
