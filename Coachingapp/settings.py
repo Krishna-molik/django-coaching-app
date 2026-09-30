@@ -151,3 +151,28 @@ ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = {'email*','password1*','password2*'}
 ACCOUNT_EMAIL_VERIFICATION = 'optional' #for development we are setting it optional.
  
+# Google Login settings
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         },
+#         'APP': {
+#             'client_id': os.environ.get('GOOGLE_CLIENT_ID'),
+#             'secret': os.environ.get('GOOGLE_CLIENT_SECRET'),
+#             'key': ''
+#         }
+#     }
+# }
+
+
+
+
+
+
+
+
